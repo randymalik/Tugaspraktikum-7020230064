@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-// Asumsi Anda memiliki RegisterPage, jika belum, buat class RegisterPage atau ganti dengan route yang sesuai
-// import 'package:praktikumuiux_7020230064/screens/register_page.dart'; // Uncomment jika ada
 
 class ProfileScreen extends StatelessWidget {
   @override
@@ -75,4 +73,5 @@ class register_page extends StatelessWidget {
       body: Center(child: Text("Register Screen")),
     );
   }
+
 }
