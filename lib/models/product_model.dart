@@ -1,7 +1,7 @@
-import 'dart:math'; // Untuk generate ID acak jika diperlukan
+import 'dart:math';
 
 class Product {
-  final String id; // Tambahkan ID unik untuk setiap produk
+  final String id;
   final String name;
   final String price;
   final String image;
@@ -15,7 +15,7 @@ class Product {
     required this.description,
   });
 
-  // Factory constructor untuk membuat produk baru dengan ID otomatis
+  
   factory Product.create({
     required String name,
     required String price,
@@ -31,7 +31,6 @@ class Product {
     );
   }
 
-  // Method untuk copy produk dengan perubahan (untuk update dinamis)
   Product copyWith({
     String? id,
     String? name,
@@ -48,31 +47,25 @@ class Product {
     );
   }
 
-  // Override toString untuk debugging
   @override
   String toString() {
     return 'Product(id: $id, name: $name, price: $price, image: $image, description: $description)';
   }
 
-  // Helper function untuk generate ID unik (sederhana, bisa diganti dengan UUID)
   static String _generateId() {
     return Random().nextInt(999999).toString();
   }
 }
 
-// Class untuk mengelola list produk secara dinamis
 class ProductManager {
   List<Product> _products = [];
 
-  // Getter untuk list produk (immutable dari luar)
   List<Product> get products => List.unmodifiable(_products);
 
-  // Method untuk menambah produk baru
   void addProduct(Product product) {
     _products.add(product);
   }
 
-  // Method untuk menghapus produk berdasarkan ID
   bool removeProduct(String id) {
     final index = _products.indexWhere((p) => p.id == id);
     if (index != -1) {
@@ -82,7 +75,6 @@ class ProductManager {
     return false;
   }
 
-  // Method untuk update produk berdasarkan ID
   bool updateProduct(String id, Product updatedProduct) {
     final index = _products.indexWhere((p) => p.id == id);
     if (index != -1) {
@@ -92,13 +84,11 @@ class ProductManager {
     return false;
   }
 
-  // Method untuk mendapatkan produk berdasarkan ID (diperbaiki)
   Product? getProductById(String id) {
     final matches = _products.where((p) => p.id == id);
     return matches.isNotEmpty ? matches.first : null;
   }
 
-  // Method untuk load dummy data awal
   void loadDummyProducts() {
     _products = [
       Product.create(
@@ -159,4 +149,5 @@ void main() {
   for (var product in productManager.products) {
     print(product);
   }
+
 }
